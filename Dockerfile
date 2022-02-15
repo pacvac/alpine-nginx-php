@@ -26,10 +26,12 @@ RUN apk add --no-cache \
     php7-xml \
     php7-xmlreader \
     php7-zlib \
+    php7-pecl-redis \
+    php7-pecl-imagick \
     supervisor
 
 # Create symlink so programs depending on `php` still function
-RUN ln -s /usr/bin/php7 /usr/bin/php
+# RUN ln -s /usr/bin/php7 /usr/bin/php
 
 # Configure nginx
 COPY config/nginx.conf /etc/nginx/nginx.conf
