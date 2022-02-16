@@ -29,8 +29,7 @@ RUN apk add --no-cache \
     php7-pecl-redis \
     php7-pecl-imagick \
     php7-tokenizer \
-    supervisor \
-    && rm -rf /var/cache/apk/*
+    supervisor
 
 # Create symlink so programs depending on `php` still function
 # RUN ln -s /usr/bin/php7 /usr/bin/php
