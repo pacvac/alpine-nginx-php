@@ -27,6 +27,7 @@ RUN apk add --no-cache \
     php7-xmlreader \
     php7-zlib \
     php7-pecl-redis \
+    php7-tokenizer \
     supervisor
 
 # Create symlink so programs depending on `php` still function
