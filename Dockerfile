@@ -1,7 +1,7 @@
 ARG ALPINE_VERSION=3.14
 FROM alpine:${ALPINE_VERSION}
 LABEL Maintainer="Vidhya Kumar <vidhya@pacvac.com>"
-LABEL Description="Lightweight container with Nginx 1.20 & PHP 8.0 based on Alpine Linux."
+LABEL Description="Lightweight container with Nginx 1.20 & PHP 7.4 based on Alpine Linux."
 # Setup document root
 WORKDIR /var/www/html
 
@@ -27,7 +27,6 @@ RUN apk add --no-cache \
     php7-xmlreader \
     php7-zlib \
     php7-pecl-redis \
-    php7-pecl-imagick \
     supervisor
 
 # Create symlink so programs depending on `php` still function

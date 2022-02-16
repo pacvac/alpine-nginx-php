@@ -2,7 +2,7 @@
 
 Example PHP-FPM 7.4 & Nginx 1.20 container image for Docker, build on [Alpine Linux](https://www.alpinelinux.org/).
 
-Repository: https://github.com/TrafeX/docker-php-nginx
+Repository: https://github.com/pacvac/docker-php-nginx
 
 -   Built on the lightweight and secure Alpine Linux distribution
 -   Multi-platform, supporting AMD4, ARMv6, ARMv7, ARM64
