@@ -2,7 +2,7 @@
 
 Example PHP-FPM 7.4 & Nginx 1.20 container image for Docker, build on [Alpine Linux](https://www.alpinelinux.org/).
 
-Repository: https://github.com/pacvac/docker-php-nginx
+Repository: https://github.com/pacvac/alpine-nginx-php
 
 -   Built on the lightweight and secure Alpine Linux distribution
 -   Multi-platform, supporting AMD4, ARMv6, ARMv7, ARM64
@@ -14,7 +14,7 @@ Repository: https://github.com/pacvac/docker-php-nginx
 -   The logs of all the services are redirected to the output of the Docker container (visible with `docker logs -f <container name>`)
 -   Follows the KISS principle (Keep It Simple, Stupid) to make it easy to understand and adjust the image to your needs
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/pacvac/docker-php-nginx.svg)](https://hub.docker.com/r/pacvac/docker-php-nginx/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/pacvac/alpine-nginx-php.svg)](https://hub.docker.com/r/pacvac/alpine-nginx-php/)
 ![nginx 1.20](https://img.shields.io/badge/nginx-1.20-brightgreen.svg)
 ![php 7.4](https://img.shields.io/badge/php-7.4-brightgreen.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -28,13 +28,13 @@ the best practices and is easy to understand and modify to your needs.
 
 Start the Docker container:
 
-    docker run -p 80:8080 pacvac/docker-php-nginx
+    docker run -p 80:8080 pacvac/alpine-nginx-php
 
 See the PHP info on http://localhost, or the static html page on http://localhost/test.html
 
 Or mount your own code to be served by PHP-FPM & Nginx
 
-    docker run -p 80:8080 -v ~/my-codebase:/var/www/html pacvac/docker-php-nginx
+    docker run -p 80:8080 -v ~/my-codebase:/var/www/html pacvac/alpine-nginx-php
 
 ## Configuration
 
@@ -43,15 +43,15 @@ If you want to extend or customize that you can do so by mounting a configuratio
 
 Nginx configuration:
 
-    docker run -v "`pwd`/nginx-server.conf:/etc/nginx/conf.d/server.conf" pacvac/docker-php-nginx
+    docker run -v "`pwd`/nginx-server.conf:/etc/nginx/conf.d/server.conf" pacvac/alpine-nginx-php
 
 PHP configuration:
 
-    docker run -v "`pwd`/php-setting.ini:/etc/php8/conf.d/settings.ini" pacvac/docker-php-nginx
+    docker run -v "`pwd`/php-setting.ini:/etc/php8/conf.d/settings.ini" pacvac/alpine-nginx-php
 
 PHP-FPM configuration:
 
-    docker run -v "`pwd`/php-fpm-settings.conf:/etc/php8/php-fpm.d/server.conf" pacvac/docker-php-nginx
+    docker run -v "`pwd`/php-fpm-settings.conf:/etc/php8/php-fpm.d/server.conf" pacvac/alpine-nginx-php
 
 _Note; Because `-v` requires an absolute path I've added `pwd` in the example to return the absolute path to the current directory_
 
@@ -60,7 +60,7 @@ _Note; Because `-v` requires an absolute path I've added `pwd` in the example to
 If you need [Composer](https://getcomposer.org/) in your project, here's an easy way to add it.
 
 ```Dockerfile
-FROM pacvac/docker-php-nginx:latest
+FROM pacvac/alpine-nginx-php:latest
 
 # Install composer from the official image
 COPY --from=composer /usr/bin/composer /usr/bin/composer
@@ -88,6 +88,6 @@ RUN composer install \
 
 # continue stage build with the desired image and copy the source including the
 # dependencies downloaded by composer
-FROM pacvac/docker-php-nginx
+FROM pacvac/alpine-nginx-php
 COPY --chown=nginx --from=composer /app /var/www/html
 ```
